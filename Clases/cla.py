@@ -1,34 +1,47 @@
 #Python 3.9.6
 
 import math
+from re import T
 
 class Circulo:
 
 
     def __init__(self, radio):
-        
-        error = "Ups! No puedes ingresar un radio menor o igual a 1"
 
-        if radio > 0:
-
-            self.radio = float(radio)
-            self.nPi = math.pi
-        else:
-            print(error)
+        self.radio = float(radio)
+        self.nPi = math.pi
 
     def perCirculo(self):
         
         perimetro = 2*self.nPi*self.radio
-        print(perimetro)
+        print("Perimetro:", perimetro)
 
     def areaCirculo(self):
 
         area = self.nPi*(self.radio**2)
-        print(area)
+        print("Area:", area)
 
-radio = float(input("Radio del circulo: "))
+def radioEsValido(rad):
 
-circulo1 = Circulo(radio)
+    errorRadio = "Ups! El radio no debe ser menor o igual a 0(cero)"
 
-circulo1.areaCirculo()
-circulo1.perCirculo()
+    if rad <= 0:
+
+        print(errorRadio)
+        return False
+    else:
+        
+        print("Calculando...")
+        return True
+
+def main():
+
+    radio = float(input("Radio del circulo: "))
+
+    if radioEsValido(radio):
+        circulo1 = Circulo(radio)
+
+        circulo1.areaCirculo()
+        circulo1.perCirculo()
+
+main()
