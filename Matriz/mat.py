@@ -1,9 +1,3 @@
-"""
-Crear una matriz de 5x5 randomizada con números enteros, encontrar secuencia de 4
-números consecutivos horizontal o vertical y si se encuentra mostrar la posición inicial y
-final.
-"""
-
 #Python 3.9.6
 
 import numpy as R
@@ -75,19 +69,10 @@ def scanVertical(m5x5):
 
 def main():
 
-    matriz5x5 = [
-        [1, 2, 3, 4, 5],
-        [2, 3, 4, 2, 4],
-        [3, 5, 5, 4, 3],
-        [4, 5, 2, 3, 2],
-        [5, 4, 3, 2, 1]
-    ]#R.random.randint(1, 6, size=(filasMatriz, columnasMatriz))
+    matriz5x5 = R.random.randint(1, 6, size=(filasMatriz, columnasMatriz))
 
     scanHorizontal(matriz5x5)
     scanVertical(matriz5x5)
-
-    for i in range(0, len(matriz5x5)):
-        print(matriz5x5[i])
     
     print(posInicial)
     print(posFinal)
