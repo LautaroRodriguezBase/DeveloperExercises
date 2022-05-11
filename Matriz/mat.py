@@ -69,12 +69,15 @@ def scanVertical(m5x5):
 
 def main():
 
-    matriz5x5 = R.random.randint(1, 6, size=(filasMatriz, columnasMatriz))
+    matriz = R.random.randint(1, 6, size=(filasMatriz, columnasMatriz))
 
-    scanHorizontal(matriz5x5)
-    scanVertical(matriz5x5)
+    scanHorizontal(matriz)
+    scanVertical(matriz)
     
-    print(posInicial)
-    print(posFinal)
+    print("""
+{}
+    posiciones Iniciales: {}
+    posiciones Finales:   {}
+    """.format(matriz, posInicial, posFinal))
 
 main()
