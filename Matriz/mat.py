@@ -8,45 +8,88 @@ final.
 
 import numpy as R
 
+filasMatriz = 5
+columnasMatriz = 5
+cantDeNumerosEnSecuencia = 4-1
+
 posFinal = []
 posInicial = []
 
 def scanHorizontal(m5x5):
 
-    for i in range(0, len(m5x5)):
+    for filas in range(filasMatriz):
+        
+        for columnas in range(columnasMatriz-cantDeNumerosEnSecuencia):
+            x = 1
+            while m5x5[filas][columnas] == (m5x5[filas][columnas+x]-x):
 
-        for j in range(0, len(m5x5[i])-3):
+                if x == 3:
+            
+                    posInicial.insert(0, [filas, columnas])
+                    posFinal.insert(0, [filas, columnas+x])
+                    break
+                x+=1
+    
+    for filas in range(filasMatriz):
+        
+        for columnas in range(columnasMatriz-1, (cantDeNumerosEnSecuencia-1), -1):
+            x = 1
+            while m5x5[filas][columnas] == (m5x5[filas][columnas-x]-x):
 
-            if (m5x5[i][j] == (m5x5[i][j+1]-1)) and (m5x5[i][j] == (m5x5[i][j+2]-2)) and (m5x5[i][j] == (m5x5[i][j+3]-3)):
-
-                posFinal.insert(0, [i, j])
-                posInicial.insert(0, [i, j+3])
+                if x == 3:
+            
+                    posInicial.insert(0, [filas, columnas])
+                    posFinal.insert(0, [filas, columnas-x])
+                    break
+                x+=1
 
 def scanVertical(m5x5):
 
-    for j in range(0, len(m5x5)):
+    for columnas in range(columnasMatriz):
 
-        for i in range(0, len(m5x5[j])-3):
+        for filas in range(filasMatriz-cantDeNumerosEnSecuencia):
 
-            if (m5x5[i][j] == (m5x5[i+1][j]-1)) and (m5x5[i][j] == (m5x5[i+2][j]-2)) and (m5x5[i][j] == (m5x5[i+3][j]-3)):
+            x = 1
+            while m5x5[filas][columnas] == ((m5x5[filas+x][columnas])-x):
 
-                posFinal.insert(0, [i, j])
-                posInicial.insert(0, [i+3, j])
+                if x == 3:
+            
+                    posInicial.insert(0, [filas, columnas])
+                    posFinal.insert(0, [filas+x, columnas])
+                    break
+                x+=1
+
+    for columnas in range(columnasMatriz):
+
+        for filas in range(filasMatriz-1, cantDeNumerosEnSecuencia-1, -1):
+
+            x = 1
+            while m5x5[filas][columnas] == ((m5x5[filas-x][columnas])-x):
+
+                if x == 3:
+            
+                    posInicial.insert(0, [filas, columnas])
+                    posFinal.insert(0, [filas-x, columnas])
+                    break
+                x+=1
 
 def main():
 
-    matriz5x5 =[[1, 2, 3, 4, 1],
-                [1, 2, 5, 4, 2],
-                [2, 3, 4, 1, 3],
-                [5, 4, 3, 4, 4],
-                [1, 5, 3, 4, 5]]#R.random.randint(1, 5, size=(7, 5))
+    matriz5x5 = [
+        [1, 2, 3, 4, 5],
+        [2, 3, 4, 2, 4],
+        [3, 5, 5, 4, 3],
+        [4, 5, 2, 3, 2],
+        [5, 4, 3, 2, 1]
+    ]#R.random.randint(1, 6, size=(filasMatriz, columnasMatriz))
 
     scanHorizontal(matriz5x5)
     scanVertical(matriz5x5)
 
     for i in range(0, len(matriz5x5)):
         print(matriz5x5[i])
-    print(posFinal)
+    
     print(posInicial)
+    print(posFinal)
 
 main()
