@@ -1,7 +1,6 @@
 #Python 3.9.6
 
 import math
-from re import T
 
 class Circulo:
 
@@ -23,25 +22,46 @@ class Circulo:
 
 def radioEsValido(rad):
 
-    errorRadio = "Ups! El radio no debe ser menor o igual a 0(cero)"
+    errorRadio = """Ups! El radio no debe:
+    -ser menor o igual a 0(cero) 
+    -contener caracteres distintos de 0 a 9
+    -o tener mas de un '.'(punto)"""
+    caracteresValidos = list((range(1, 10)))
+    caracteresValidos += "."
+    val = False
 
-    if rad <= 0:
+    for char in rad:
 
-        print(errorRadio)
-        return False
-    else:
-        
-        print("Calculando...")
-        return True
+        if (char in str(caracteresValidos)) and not(rad.count(".") > 1):
+            val = True
+        else:
+            print(errorRadio)
+            return False
+
+    print("Calculando...")
+    return val
+            
+
+def crearObjeto(rad):
+
+    circulo1 = Circulo(rad)
+
+    circulo1.areaCirculo()
+    circulo1.perCirculo()
+
+    if input("Desea cambiar el radio? y/n: ") == 'y':
+
+        main()
 
 def main():
 
-    radio = float(input("Radio del circulo: "))
+    radio = input("Radio del circulo: ")
 
     if radioEsValido(radio):
-        circulo1 = Circulo(radio)
+        
+        crearObjeto(float(radio))
+    else:
+        main()
 
-        circulo1.areaCirculo()
-        circulo1.perCirculo()
 
 main()
