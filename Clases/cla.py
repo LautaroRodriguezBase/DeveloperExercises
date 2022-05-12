@@ -19,6 +19,7 @@ class Circulo:
         area = self.nPi*(self.radio**2)
         print("Area:", area)
 
+#Verifica que, ya sea el radio o el num por el que se lo multiplica, sea mayor que 0 y no tenga caracteres aparte.
 def radioEsValido(rad):
 
     errorRadio = """Ups! El numero no debe:
@@ -45,6 +46,7 @@ def radioEsValido(rad):
     print("Calculando...")
     return val
             
+#Crea el objeto y se mantiene en un loop infinito hasta que el usuario deje de cambiar el radio o crear un nuevo circulo
 def crearObjeto(rad):
 
     circuloMul = 1
