@@ -1,6 +1,7 @@
 # Developer Exercises
 ***
 Ejercicios en Python.
+Todavía quedan updates por hacer. Los códigos de estos ejercicios se irán mejorando.
 ## Contenidos
 1.[Simple](#simple)
 2.[Matriz](#matriz)
