@@ -9,6 +9,7 @@ cantDeNumerosEnSecuencia = 4-1
 posFinal = []
 posInicial = []
 
+#Dependiendo de como se pasen las variables va a recorrer la matriz en un sentido o en el otro
 def scanHorizontal(m5x5, Desde, Hasta, Limite, paso):
 
     for filas in range(filasMatriz):
